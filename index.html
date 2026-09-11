@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Crimson Nexus</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="ui-top">
+        <div class="balance">
+            <span id="score">0</span> <span class="currency">BYTES</span>
+        </div>
+        
+        <div class="energy-container">
+            <div id="energy-text">1000 / 1000 ⚡</div>
+            <div class="energy-bar-bg">
+                <div id="energy-fill"></div>
+            </div>
+        </div>
+    </header>
+
+    <main id="game-zone">
+        <div id="core">
+            <div class="core-inner"></div>
+        </div>
+    </main>
+
+    <!-- Кнопка вызова терминала -->
+    <nav id="bottom-nav">
+        <button id="btn-upgrades" onclick="toggleMenu('upgrades-modal')">
+            [ ТЕРМИНАЛ УЛУЧШЕНИЙ ]
+        </button>
+    </nav>
+
+    <!-- Всплывающее окно прокачки -->
+    <div id="upgrades-modal" class="modal-overlay hidden">
+        <div class="modal-header">
+            <h2>>_ UPGRADES_</h2>
+            <button class="close-btn" onclick="toggleMenu('upgrades-modal')">X</button>
+        </div>
+        
+        <div class="modal-content">
+            <!-- 1. Сила клика -->
+            <div class="upgrade-card" id="upg-click">
+                <div class="upg-info">
+                    <h3>Инжектор урона</h3>
+                    <p>+1 BYTES за клик</p>
+                </div>
+                <button class="buy-btn" onclick="buyUpgrade('click')"><span id="cost-click">50</span> B</button>
+            </div>
+
+            <!-- 2. Емкость энергии -->
+            <div class="upgrade-card" id="upg-energy">
+                <div class="upg-info">
+                    <h3>Аккумулятор</h3>
+                    <p>+500 Макс. Энергии</p>
+                </div>
+                <button class="buy-btn" onclick="buyUpgrade('energy')"><span id="cost-energy">150</span> B</button>
+            </div>
+
+            <!-- 3. Реген энергии -->
+            <div class="upgrade-card" id="upg-regen">
+                <div class="upg-info">
+                    <h3>Крио-охлаждение</h3>
+                    <p>+1 ⚡ / сек регенерации</p>
+                </div>
+                <button class="buy-btn" onclick="buyUpgrade('regen')"><span id="cost-regen">200</span> B</button>
+            </div>
+
+            <!-- 4. Пассивный доход -->
+            <div class="upgrade-card" id="upg-passive">
+                <div class="upg-info">
+                    <h3>Ботнет-майнер</h3>
+                    <p>+2 BYTES / сек пассивно</p>
+                </div>
+                <button class="buy-btn" onclick="buyUpgrade('passive')"><span id="cost-passive">300</span> B</button>
+            </div>
+
+            <!-- 5. Шанс крита -->
+            <div class="upgrade-card" id="upg-crit">
+                <div class="upg-info">
+                    <h3>Оверклокинг</h3>
+                    <p>+5% шанс на 5x урон</p>
+                </div>
+                <button class="buy-btn" onclick="buyUpgrade('crit')"><span id="cost-crit">500</span> B</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
